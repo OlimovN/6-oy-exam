@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,14 @@ function Login() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const [errors, setErrors] = useState({});
+  const [avatarURL, setAvatarURL] = useState("");
+
+  useEffect(() => {
+    const savedAvatarURL = localStorage.getItem("avatarURL");
+    if (savedAvatarURL) {
+      setAvatarURL(savedAvatarURL);
+    }
+  }, []);
 
   function validate(email, password) {
     const errors = {};
@@ -64,18 +72,24 @@ function Login() {
       <div className={styles.formContainer}>
         <form className={styles.form}>
           <div className={styles.avatarContainer}>
-            <img src="..//assets/your-avatar.svg" alt="Avatar" />
+            {avatarURL && (
+              <img src={avatarURL} alt="Avatar" className={styles.avatar} />
+            )}
           </div>
           <h3>Nice to see you again</h3>
           {errors.general && <p className={styles.error}>{errors.general}</p>}
           <div className={styles.inputGroup}>
-            <label >Login:</label>
+            <label>Login:</label>
             <input placeholder="Enter your email" type="email" ref={emailRef} />
             {errors.email && <p className={styles.error}>{errors.email}</p>}
           </div>
           <div className={styles.inputGroup}>
             <label>Password:</label>
-            <input  placeholder="Enter your password" type="password" ref={passwordRef} />
+            <input
+              placeholder="Enter your password"
+              type="password"
+              ref={passwordRef}
+            />
             {errors.password && (
               <p className={styles.error}>{errors.password}</p>
             )}

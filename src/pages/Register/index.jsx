@@ -8,9 +8,8 @@ function Register() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
-  const avatarRef = useRef(null);
   const [errors, setErrors] = useState({});
-  const [avatar, setAvatar] = useState(null);
+  const [avatarURL, setAvatarURL] = useState("");
 
   function validate(username, email, password, confirmPassword) {
     const errors = {};
@@ -42,9 +41,9 @@ function Register() {
   }
 
   function handleAvatarChange(event) {
-    const file = event.target.files[0];
-    if (file) {
-      setAvatar(URL.createObjectURL(file));
+    const url = event.target.value;
+    if (url) {
+      setAvatarURL(url);
     }
   }
 
@@ -62,23 +61,20 @@ function Register() {
       username: usernameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
+      avatar: avatarURL,
     };
-
-    const formData = new FormData();
-    formData.append("username", user.username);
-    formData.append("email", user.email);
-    formData.append("password", user.password);
-    if (avatarRef.current.files[0]) {
-      formData.append("avatar", avatarRef.current.files[0]);
-    }
 
     fetch("https://api.escuelajs.co/api/v1/users", {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data) {
+          localStorage.setItem("avatarURL", avatarURL); // Save avatar URL to local storage
           navigate("/login");
         } else {
           setErrors({ general: "Registration failed. Please try again." });
@@ -97,54 +93,58 @@ function Register() {
           {errors.general && <p className={styles.error}>{errors.general}</p>}
           <div className={styles.inputGroup}>
             <label>Username:</label>
-            <input placeholder="Enter your user name" type="text" ref={usernameRef} />
+            <input
+              placeholder="Enter your username"
+              type="text"
+              ref={usernameRef}
+            />
             {errors.username && (
               <p className={styles.error}>{errors.username}</p>
             )}
           </div>
           <div className={styles.inputGroup}>
             <label>Email:</label>
-            <input placeholder="enter your email" type="email" ref={emailRef} />
+            <input placeholder="Enter your email" type="email" ref={emailRef} />
             {errors.email && <p className={styles.error}>{errors.email}</p>}
           </div>
           <div className={styles.inputGroup}>
             <label>Password:</label>
-            <input placeholder="Enter your Password" type="password" ref={passwordRef} />
+            <input
+              placeholder="Enter your password"
+              type="password"
+              ref={passwordRef}
+            />
             {errors.password && (
               <p className={styles.error}>{errors.password}</p>
             )}
           </div>
           <div className={styles.inputGroup}>
             <label>Confirm Password:</label>
-            <input placeholder="Enter your Coniform Password" type="password" ref={confirmPasswordRef} />
+            <input
+              placeholder="Confirm your password"
+              type="password"
+              ref={confirmPasswordRef}
+            />
             {errors.confirmPassword && (
               <p className={styles.error}>{errors.confirmPassword}</p>
             )}
           </div>
           <div className={styles.inputGroup}>
-            <label>Avatar:</label>
+            <label>Avatar URL:</label>
+            <input
+              type="text"
+              placeholder="Enter avatar URL"
+              onChange={handleAvatarChange}
+              className={styles.urlInput}
+            />
             <div className={styles.avatarContainer}>
-              <input
-                type="file"
-                accept="image/*"
-                ref={avatarRef}
-                onChange={handleAvatarChange}
-                id="avatar"
-                className={styles.fileInput}
-              />
-              <label htmlFor="avatar" className={styles.avatarLabel}>
-                {avatar ? (
-                  <img
-                    src={avatar}
-                    alt="Avatar Preview"
-                    className={styles.avatarPreview}
-                  />
-                ) : (
-                  <div className={styles.avatarPlaceholder}>
-                    <span>Upload Avatar</span>
-                  </div>
-                )}
-              </label>
+              {avatarURL && (
+                <img
+                  src={avatarURL}
+                  alt="Avatar Preview"
+                  className={styles.avatarPreview}
+                />
+              )}
             </div>
           </div>
           <div className={styles.rememberMeContainer}>
@@ -154,7 +154,11 @@ function Register() {
               Forgot Password?
             </a>
           </div>
-          <button type="submit" onClick={handleClick}>
+          <button
+            type="submit"
+            onClick={handleClick}
+            className={styles.submitButton}
+          >
             Register
           </button>
           <div className={styles.socialLogin}>
