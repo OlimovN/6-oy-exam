@@ -1,0 +1,108 @@
+import React, { useRef, useState } from "react";
+import styles from "./index.module.css";
+import { useNavigate } from "react-router-dom";
+
+function Login() {
+  const navigate = useNavigate();
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const [errors, setErrors] = useState({});
+
+  function validate(email, password) {
+    const errors = {};
+    const emailValue = email.current.value.trim();
+    if (!emailValue) {
+      errors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(emailValue)) {
+      errors.email = "Invalid email format.";
+    }
+
+    const passwordValue = password.current.value;
+    if (!passwordValue) {
+      errors.password = "Password is required.";
+    }
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+  }
+
+  function handleClick(event) {
+    event.preventDefault();
+    const isValid = validate(emailRef, passwordRef);
+    if (!isValid) return;
+
+    const user = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    fetch("https://api.escuelajs.co/api/v1/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.access_token) {
+          localStorage.setItem("token", data.access_token);
+          navigate("/home");
+        } else {
+          setErrors({ general: "Invalid credentials. Please try again." });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrors({ general: "An error occurred. Please try again later." });
+      });
+  }
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.formContainer}>
+        <form className={styles.form}>
+          <div className={styles.avatarContainer}>
+            <img src="..//assets/your-avatar.svg" alt="Avatar" />
+          </div>
+          <h3>Nice to see you again</h3>
+          {errors.general && <p className={styles.error}>{errors.general}</p>}
+          <div className={styles.inputGroup}>
+            <label >Login:</label>
+            <input placeholder="Enter your email" type="email" ref={emailRef} />
+            {errors.email && <p className={styles.error}>{errors.email}</p>}
+          </div>
+          <div className={styles.inputGroup}>
+            <label>Password:</label>
+            <input  placeholder="Enter your password" type="password" ref={passwordRef} />
+            {errors.password && (
+              <p className={styles.error}>{errors.password}</p>
+            )}
+          </div>
+          <div className={styles.rememberMeContainer}>
+            <input type="checkbox" id="rememberMe" />
+            <label htmlFor="rememberMe">Remember me</label>
+            <a href="/forgot-password" className={styles.forgotPassword}>
+              Forgot Password?
+            </a>
+          </div>
+          <button type="submit" onClick={handleClick}>
+            Sign in
+          </button>
+          <button className={styles.googleButton}>
+            <img src="/path-to-google-icon.png" alt="Google" />
+            Or sign in with Google
+          </button>
+          <div className={styles.footer}>
+            <p>
+              Don't have an account? <a href="/">Sign up now</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
