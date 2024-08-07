@@ -74,7 +74,7 @@ function Register() {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          localStorage.setItem("avatarURL", avatarURL); // Save new avatar URL to local storage
+          localStorage.setItem("avatarURL", avatarURL);
           navigate("/login");
         } else {
           setErrors({ general: "Registration failed. Please try again." });
@@ -89,7 +89,10 @@ function Register() {
     <div className={styles.container}>
       <div className={styles.formContainer}>
         <div className={styles.imageContainer}>
-          <img src="https://via.placeholder.com/400" alt="Registration" />
+          <img
+            src="https://i.pinimg.com/1200x/8e/a3/20/8ea320e20791e263acdee9914e1dab3b.jpg"
+            alt="Registration"
+          />
         </div>
         <form className={styles.form}>
           <h3>Create Your Account</h3>
@@ -159,7 +162,7 @@ function Register() {
           </button>
           <div className={styles.socialLogin}>
             <button className={styles.googleButton}>
-              <img src="/path-to-google-icon.png" alt="Google" />
+              <i class="fa-brands fa-google"></i>
               Or sign up with Google
             </button>
           </div>

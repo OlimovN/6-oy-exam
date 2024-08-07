@@ -71,7 +71,10 @@ function Login() {
     <div className={styles.container}>
       <div className={styles.formContainer}>
         <div className={styles.imageContainer}>
-          <img src="https://via.placeholder.com/400" alt="Login" />
+          <img
+            src="https://cdni.iconscout.com/illustration/premium/thumb/account-login-4571935-3805756.png"
+            alt="Registration"
+          />
         </div>
         <form className={styles.form}>
           <div className={styles.avatarContainer}>
@@ -108,7 +111,7 @@ function Login() {
             Sign in
           </button>
           <button className={styles.googleButton}>
-            <img src="/path-to-google-icon.png" alt="Google" />
+            <i class="fa-brands fa-google"></i>
             Or sign in with Google
           </button>
           <div className={styles.footer}>

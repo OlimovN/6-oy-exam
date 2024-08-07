@@ -28,7 +28,7 @@ function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsGreetingVisible(false);
-    }, 1000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -50,7 +50,6 @@ function Home() {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 
   const handleChange = (e) => {
     setCarDetails({ ...carDetails, [e.target.name]: e.target.value });
@@ -76,50 +75,52 @@ function Home() {
           </h1>
         </div>
       ) : (
-        <div className={styles.form}>
-          <input
-            type="text"
-            name="year"
-            placeholder="Car Year"
-            value={carDetails.year}
-            onChange={handleChange}
-            className={`${styles.input} ${errors.year ? styles.error : ""}`}
-          />
-          {errors.year && <p className={styles.errorText}>{errors.year}</p>}
+        <div className={styles.formContainer}>
+          <div className={styles.form}>
+            <input
+              type="text"
+              name="year"
+              placeholder="Car Year"
+              value={carDetails.year}
+              onChange={handleChange}
+              className={`${styles.input} ${errors.year ? styles.error : ""}`}
+            />
+            {errors.year && <p className={styles.errorText}>{errors.year}</p>}
 
-          <input
-            type="text"
-            name="price"
-            placeholder="Car Price"
-            value={carDetails.price}
-            onChange={handleChange}
-            className={`${styles.input} ${errors.price ? styles.error : ""}`}
-          />
-          {errors.price && <p className={styles.errorText}>{errors.price}</p>}
+            <input
+              type="text"
+              name="price"
+              placeholder="Car Price"
+              value={carDetails.price}
+              onChange={handleChange}
+              className={`${styles.input} ${errors.price ? styles.error : ""}`}
+            />
+            {errors.price && <p className={styles.errorText}>{errors.price}</p>}
 
-          <input
-            type="text"
-            name="model"
-            placeholder="Car Model"
-            value={carDetails.model}
-            onChange={handleChange}
-            className={`${styles.input} ${errors.model ? styles.error : ""}`}
-          />
-          {errors.model && <p className={styles.errorText}>{errors.model}</p>}
+            <input
+              type="text"
+              name="model"
+              placeholder="Car Model"
+              value={carDetails.model}
+              onChange={handleChange}
+              className={`${styles.input} ${errors.model ? styles.error : ""}`}
+            />
+            {errors.model && <p className={styles.errorText}>{errors.model}</p>}
 
-          <input
-            type="text"
-            name="image"
-            placeholder="Car Image URL"
-            value={carDetails.image}
-            onChange={handleChange}
-            className={`${styles.input} ${errors.image ? styles.error : ""}`}
-          />
-          {errors.image && <p className={styles.errorText}>{errors.image}</p>}
+            <input
+              type="text"
+              name="image"
+              placeholder="Car Image URL"
+              value={carDetails.image}
+              onChange={handleChange}
+              className={`${styles.input} ${errors.image ? styles.error : ""}`}
+            />
+            {errors.image && <p className={styles.errorText}>{errors.image}</p>}
 
-          <button onClick={handleAddCar} className={styles.button}>
-            Add Car
-          </button>
+            <button onClick={handleAddCar} className={styles.button}>
+              Add Car
+            </button>
+          </div>
         </div>
       )}
       <div className={styles.cardContainer}>
