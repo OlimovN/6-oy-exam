@@ -70,6 +70,9 @@ function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
+        <div className={styles.imageContainer}>
+          <img src="https://via.placeholder.com/400" alt="Login" />
+        </div>
         <form className={styles.form}>
           <div className={styles.avatarContainer}>
             {avatarURL && (
@@ -110,7 +113,7 @@ function Login() {
           </button>
           <div className={styles.footer}>
             <p>
-              Don't have an account? <a href="/">Sign up now</a>
+              Don’t have an account? <a href="/">Register here</a>
             </p>
           </div>
         </form>

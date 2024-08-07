@@ -74,7 +74,7 @@ function Register() {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          localStorage.setItem("avatarURL", avatarURL); // Save avatar URL to local storage
+          localStorage.setItem("avatarURL", avatarURL); // Save new avatar URL to local storage
           navigate("/login");
         } else {
           setErrors({ general: "Registration failed. Please try again." });
@@ -88,6 +88,9 @@ function Register() {
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
+        <div className={styles.imageContainer}>
+          <img src="https://via.placeholder.com/400" alt="Registration" />
+        </div>
         <form className={styles.form}>
           <h3>Create Your Account</h3>
           {errors.general && <p className={styles.error}>{errors.general}</p>}
@@ -146,13 +149,6 @@ function Register() {
                 />
               )}
             </div>
-          </div>
-          <div className={styles.rememberMeContainer}>
-            <input type="checkbox" id="rememberMe" />
-            <label htmlFor="rememberMe">Remember me</label>
-            <a href="/forgot-password" className={styles.forgotPassword}>
-              Forgot Password?
-            </a>
           </div>
           <button
             type="submit"

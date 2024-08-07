@@ -5,56 +5,50 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-color: #f0f0f0;
 }
 
 .formContainer {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
 }
 
 .form h3 {
   margin-bottom: 20px;
-  color: #333333;
-  font-family: 'Circular Std', sans-serif;
+  color: #333;
 }
 
 .inputGroup {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .inputGroup label {
   display: block;
   margin-bottom: 5px;
-  color: #666666;
+  color: #555;
 }
 
 .inputGroup input {
   width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #dddddd;
-  border-radius: 6px;
-  font-size: 14px;
-  font-family: 'Circular Std', sans-serif;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .inputGroup .urlInput {
   width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #dddddd;
-  border-radius: 6px;
-  font-size: 14px;
-  font-family: 'Circular Std', sans-serif;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .avatarContainer {
-  display: flex;
-  justify-content: center;
   margin-top: 10px;
+  text-align: center;
 }
 
 .avatarPreview {
@@ -62,48 +56,20 @@
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #dddddd;
 }
 
 .submitButton {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   background-color: #007bff;
-  color: #ffffff;
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .submitButton:hover {
   background-color: #0056b3;
-}
-
-.rememberMeContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.rememberMeContainer input {
-  margin-right: 5px;
-}
-
-.rememberMeContainer label {
-  margin-right: auto;
-  color: #666666;
-}
-
-.forgotPassword {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.forgotPassword:hover {
-  text-decoration: underline;
 }
 
 .socialLogin {
@@ -118,10 +84,9 @@
   padding: 10px;
   border: none;
   background-color: #db4437;
-  color: #ffffff;
-  border-radius: 6px;
+  color: #fff;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .googleButton img {
@@ -135,14 +100,8 @@
 
 .footer a {
   color: #007bff;
-  text-decoration: none;
 }
 
 .footer a:hover {
   text-decoration: underline;
-}
-
-.error {
-  color: #ff0000;
-  margin-top: 5px;
 }
