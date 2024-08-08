@@ -14,8 +14,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 950px;
-  position: relative; /* Buni qo'shish kerak */
-}
+  position: relative; }
 
 .imageContainer {
   flex: 1;
@@ -173,15 +172,11 @@ button:hover {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-bottom: 15px;
+  gap: 10px;
 }
 
-.googleButton:hover {
-  background-color: grey;
-}
 
-.googleButton img {
-  margin-right: 10px;
-}
+
 
 .footer {
   text-align: center;

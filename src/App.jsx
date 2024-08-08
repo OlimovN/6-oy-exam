@@ -1,46 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Home from "./pages/Home";
-import Error from "./pages/Error";
+import Login from "./pages/Login/index";
+import Register from "./pages/Register/index";
+import Home from "./pages/Home/index";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsAuthenticated(true);
-    } else {
-      navigate("/login");
-    }
-  }, [navigate]);
-
-  function ProtectedRoute({ children }) {
+  function ProtectedRoute({ isAuthenticated, children }) {
     if (!isAuthenticated) {
       navigate("/login");
-      return null;
     }
     return children;
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route
-        path="/home"
-        element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        }
-      />
-      <Route path="*"  element={<Error/>}></Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Register></Register>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute isAuthenticated={true}>
+              <Home></Home>
+            </ProtectedRoute>
+          }
+        ></Route>
+      </Routes>
+    </>
   );
 }
 

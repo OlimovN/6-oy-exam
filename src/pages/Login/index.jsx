@@ -3,7 +3,6 @@ import styles from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 import manzara from "../../assets/img/dengiz.jpg";
 
-
 function Login() {
   const navigate = useNavigate();
   const emailRef = useRef(null);
@@ -58,7 +57,7 @@ function Login() {
         console.log(data);
         if (data.access_token) {
           localStorage.setItem("token", data.access_token);
-          navigate("/home");
+          navigate("/home");  
         } else {
           setErrors({ general: "Invalid credentials. Please try again." });
         }
@@ -110,7 +109,7 @@ function Login() {
             Sign in
           </button>
           <button className={styles.googleButton}>
-            <i class="fa-brands fa-google"></i>
+            <i className="fa-brands fa-google"></i>
             Or sign in with Google
           </button>
           <div className={styles.footer}>
