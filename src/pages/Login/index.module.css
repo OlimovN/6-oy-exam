@@ -8,12 +8,13 @@
 
 .formContainer {
   display: flex;
-  background: #fff;
+  background: #f0f0f0;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 800px;
+  max-width: 950px;
+  position: relative; /* Buni qo'shish kerak */
 }
 
 .imageContainer {
@@ -25,31 +26,55 @@
 }
 
 .imageContainer img {
-  max-width: 100%;
   border-radius: 8px;
+  height: 650px;
+  width: 600px;
+}
+
+.avatarContainer {
+  position: absolute;
+  top: 25px; 
+  left: 640px; 
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.avatarPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nice {
+  padding: 20px;
+  margin-left: 25px;
 }
 
 .form {
   flex: 1;
-  margin-left: 20px;
+  margin-left: 22px;
 }
 
 .form h3 {
   font-size: 20px;
   color: #333;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .inputGroup {
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 
 .inputGroup label {
   display: block;
   font-size: 14px;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: black;
 }
 
 .inputGroup input {
@@ -58,6 +83,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+  background-color: #fcf8f8;
   box-sizing: border-box;
 }
 
@@ -71,24 +97,6 @@
 input:focus {
   border-color: #007bff;
   outline: none;
-}
-
-.avatarContainer {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.avatarPreview {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .rememberMeContainer {

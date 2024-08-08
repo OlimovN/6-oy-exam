@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./index.module.css";
 import { useNavigate } from "react-router-dom";
+import manzara from "../../assets/img/dengiz.jpg";
+
 
 function Login() {
   const navigate = useNavigate();
@@ -71,10 +73,7 @@ function Login() {
     <div className={styles.container}>
       <div className={styles.formContainer}>
         <div className={styles.imageContainer}>
-          <img
-            src="https://cdni.iconscout.com/illustration/premium/thumb/account-login-4571935-3805756.png"
-            alt="Registration"
-          />
+          <img src={manzara} alt="manzara" />
         </div>
         <form className={styles.form}>
           <div className={styles.avatarContainer}>
@@ -82,7 +81,7 @@ function Login() {
               <img src={avatarURL} alt="Avatar" className={styles.avatar} />
             )}
           </div>
-          <h3>Nice to see you again</h3>
+          <h3 className={styles.nice}>Nice to see you again</h3>
           {errors.general && <p className={styles.error}>{errors.general}</p>}
           <div className={styles.inputGroup}>
             <label>Login:</label>
