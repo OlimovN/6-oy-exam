@@ -3,18 +3,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #f8f9fa;
 }
-
-.formContainer {
-  display: flex;
-  background: #f0f0f0;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 950px;
-  position: relative; }
 
 .imageContainer {
   flex: 1;
@@ -25,48 +15,58 @@
 }
 
 .imageContainer img {
-  border-radius: 8px;
-  height: 650px;
-  width: 600px;
+  height: 100%;
+  height: 600px;
+  width: 500px;
 }
 
 .avatarContainer {
   position: absolute;
-  top: 25px; 
-  left: 640px; 
-  width: 60px;
-  height: 60px;
+  top: 20px;
+  left: calc(100% - 100px); 
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.avatarPreview {
+.avatarContainer img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.nice {
-  padding: 20px;
-  margin-left: 25px;
+.formContainer {
+  display: flex;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1000px; 
+  position: relative;
 }
 
 .form {
   flex: 1;
-  margin-left: 22px;
+  margin-left: 30px;
+  max-width: 400px; 
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
 }
 
 .form h3 {
-  font-size: 20px;
+  font-size: 24px;
   color: #333;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .inputGroup {
-  margin-bottom: 30px;
+  margin-bottom: 20px; 
 }
 
 .inputGroup label {
@@ -78,19 +78,12 @@
 
 .inputGroup input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-  background-color: #fcf8f8;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fafafa;
   box-sizing: border-box;
-}
-
-.inputGroup .urlInput {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
 }
 
 input:focus {
@@ -102,19 +95,17 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
-  margin-right:65px;
+  margin-bottom: 20px;
 }
 
 .rememberMeContainer input {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .rememberMeContainer a {
   color: red;
   text-decoration: none;
   font-size: 14px;
-  padding-left: 15px;
 }
 
 .rememberMeContainer a:hover {
@@ -124,40 +115,19 @@ input:focus {
 
 button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 12px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 button:hover {
   background-color: #0056b3;
-}
-
-.submitButton {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(to right, #007bff, #0056b3);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.submitButton:hover {
-  background-color: #0056b3;
-}
-
-.socialLogin {
-  margin-top: 20px;
-  text-align: center;
 }
 
 .googleButton {
@@ -165,20 +135,24 @@ button:hover {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.75rem;
+  padding: 12px;
   background-color: #333;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   gap: 10px;
 }
+.googleButton:hover {
+  background-color: grey;
+}
 
-
-
+.googleButton i {
+  font-size: 18px;
+}
 
 .footer {
   text-align: center;
@@ -202,6 +176,6 @@ button:hover {
 
 .error {
   color: #e74c3c;
-  font-size: 12px;
-  margin-top: 0.25rem;
+  font-size: 14px;
+  margin-top: 0.5rem;
 }
