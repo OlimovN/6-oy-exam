@@ -47,7 +47,6 @@
   font-family: 'Circular Std', sans-serif;
 }
 
-/* Input Group */
 .inputGroup {
   margin-bottom: 20px;
 }
@@ -74,7 +73,6 @@
   outline: none;
 }
 
-/* URL Input */
 .inputGroup .urlInput {
   width: 100%;
   padding: 12px;
